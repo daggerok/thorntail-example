@@ -1,3 +1,10 @@
+notifications:
+  email: false
+
+git:
+  depth: false
+  quiet: true
+
 service:
 - docker
 
@@ -25,8 +32,19 @@ before_install:
 
 script:
 - ./mvnw >/dev/null
+
+- ./mvnw -pl :stateless-ejb clean package
+- bash ./8/stateless-ejb/target/*-thorntail.jar &
+- wait_for 8080
+- sleep 15
+- http :8080 color=red engineType=electric
+- http :8080 color=red
+- http :8080 engineType=electric
+- http :8080 ololo=trololo
+- stop_any 8080
+#
 - ./mvnw -pl :micro-service clean package
-- bash ./micro-service/micro-service-thorntail.jar &
+- bash ./micro-service/target/*-thorntail.jar &
 - wait_for 8080
 - sleep 15
 - http :8080

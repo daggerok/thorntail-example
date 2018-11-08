@@ -1,10 +1,21 @@
-thorntail-example (aka wildfly-swarm)
+thorntail-example (aka wildfly-swarm) image:https://travis-ci.org/daggerok/thorntail-example.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/thorntail-example"]
+
+.8/stateless-ejb
+[source,bash]
+----
+./mvnw -pl :stateless-ejb
+bash ./8/stateless-ejb/target/*-thorntail.jar
+http :8080 color=red engineType=electric
+http :8080 engineType=electric
+http :8080 color=white
+http :8080 ololo=trololo
+----
 
 .micro-service
 [source,bash]
 ----
 ./mvnw -pl :micro-service
-bash ./micro-service/micro-service-thorntail.jar
+bash ./micro-service/target/*-thorntail.jar
 http :8080
 http :8080/metrics
 http :8080/health
