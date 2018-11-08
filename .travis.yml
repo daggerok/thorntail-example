@@ -1,0 +1,34 @@
+service:
+- docker
+
+language: java
+jdk: oraclejdk8
+
+addons:
+  apt:
+    packages:
+    - sudo
+    - lsof
+    - wget
+    - bash
+    - curl
+    - jq
+    - libxml2-utils
+    - unzip
+    - python-pip
+
+install: true
+before_install:
+- sudo pip install httpie >/dev/null 2>&1
+- source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
+- stop_any 80 8080
+
+script:
+- ./mvnw >/dev/null
+- ./mvnw -pl :micro-service clean package
+- bash ./micro-service/micro-service-thorntail.jar &
+- wait_for 8080
+- sleep 15
+- http :8080
+- http :8080/health
+- stop_any 8080

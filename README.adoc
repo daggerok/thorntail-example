@@ -1,0 +1,40 @@
+thorntail-example (aka wildfly-swarm)
+
+.micro-service
+[source,bash]
+----
+./mvnw -pl :micro-service
+bash ./micro-service/micro-service-thorntail.jar
+http :8080
+http :8080/metrics
+http :8080/health
+----
+
+links:
+
+- https://thorntail.io/
+- https://docs.thorntail.io/2.2.1.Final/
+- https://www.youtube.com/watch?v=eJBqo8iKBHI
+
+.others
+----
+java -Dthorntail.classpath=/path/to/h2-1.4.196.jar -jar my-app-thorntail.jar
+java -jar my-app-thorntail.jar -s /path/to/project-defaults.yaml
+----
+
+.profiles
+----
+java -jar ./target/*-thorntail.jar -Stesting -Scloud -s/home/app/openshift.yml
+# applied in order:
+/home/app/openshift.yml
+./src/main/resources/project-testing.yml
+./src/main/resources/project-cloud.yml
+./src/main/resources/project-defaults.yml
+----
+
+.usage instructions
+----
+/usage.txt
+/META-INF/usage.txt
+/WEB-INF/usage.txt
+----
