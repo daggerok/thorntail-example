@@ -57,7 +57,6 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>io.thorntail</groupId>
         <artifactId>thorntail-maven-plugin</artifactId>
       </plugin>
     </plugins>
