@@ -12,15 +12,6 @@
   <artifactId>micro-service</artifactId>
   <packaging>war</packaging>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>io.thorntail</groupId>
-        <artifactId>thorntail-maven-plugin</artifactId>
-      </plugin>
-    </plugins>
-  </build>
-
   <dependencies>
     <!--
     <dependency>
@@ -47,20 +38,14 @@
       <groupId>io.thorntail</groupId>
       <artifactId>jsonp</artifactId>
     </dependency>
-    <!--
-    <dependency>
-      <groupId>io.thorntail</groupId>
-      <artifactId>ejb</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.thorntail</groupId>
-      <artifactId>jaxrs</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.thorntail</groupId>
-      <artifactId>transactions</artifactId>
-    </dependency>
-    -->
   </dependencies>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>io.thorntail</groupId>
+        <artifactId>thorntail-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
 </project>

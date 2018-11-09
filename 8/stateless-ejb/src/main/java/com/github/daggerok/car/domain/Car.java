@@ -1,4 +1,4 @@
-package daggerok.resources.car.domain;
+package com.github.daggerok.car.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

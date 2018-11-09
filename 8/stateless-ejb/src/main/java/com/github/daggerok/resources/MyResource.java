@@ -1,10 +1,10 @@
-package daggerok.resources;
+package com.github.daggerok.resources;
 
-import daggerok.resources.car.CarManufactorer;
-import daggerok.resources.car.Specification;
-import daggerok.resources.car.domain.Car;
-import daggerok.resources.car.domain.Color;
-import daggerok.resources.car.domain.EngineType;
+import com.github.daggerok.car.CarManufactorer;
+import com.github.daggerok.car.Specification;
+import com.github.daggerok.car.domain.Car;
+import com.github.daggerok.car.domain.Color;
+import com.github.daggerok.car.domain.EngineType;
 import io.vavr.control.Try;
 
 import javax.ejb.Stateless;

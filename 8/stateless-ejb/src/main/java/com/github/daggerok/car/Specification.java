@@ -1,7 +1,7 @@
-package daggerok.resources.car;
+package com.github.daggerok.car;
 
-import daggerok.resources.car.domain.Color;
-import daggerok.resources.car.domain.EngineType;
+import com.github.daggerok.car.domain.Color;
+import com.github.daggerok.car.domain.EngineType;
 import lombok.Builder;
 import lombok.Value;
 

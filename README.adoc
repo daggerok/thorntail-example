@@ -1,5 +1,15 @@
 thorntail-example (aka wildfly-swarm) image:https://travis-ci.org/daggerok/thorntail-example.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/thorntail-example"]
 
+.8/produces
+[source,bash]
+----
+./mvnw -pl :produces
+bash ./8/produces/target/*-thorntail.jar
+http :8080/red
+http :8080
+http :8080/trololo
+----
+
 .8/stateless-ejb
 [source,bash]
 ----

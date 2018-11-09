@@ -1,6 +1,6 @@
-package daggerok.resources.car;
+package com.github.daggerok.car;
 
-import daggerok.resources.car.domain.Car;
+import com.github.daggerok.car.domain.Car;
 
 import javax.ejb.Stateless;
 import java.util.UUID;
