@@ -4,7 +4,7 @@ import com.github.daggerok.car.domain.Car;
 import com.github.daggerok.car.domain.Color;
 import com.github.daggerok.car.produces.CarExposer.RedCar;
 import com.github.daggerok.car.produces.CarExposer.WhiteCar;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -14,11 +14,13 @@ import java.util.stream.Stream;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
-@Slf4j
 @Path("")
 @Stateless
 @Produces(APPLICATION_JSON)
 public class MyResource {
+
+  @Inject
+  Logger log;
 
   @Inject
   Car defaultBlackCar;
