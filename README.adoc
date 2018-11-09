@@ -1,4 +1,4 @@
-thorntail-example (aka wildfly-swarm) image:https://travis-ci.org/daggerok/thorntail-example.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/thorntail-example"]
+= thorntail-example (aka wildfly-swarm) image:https://travis-ci.org/daggerok/thorntail-example.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/thorntail-example"]
 
 .8/produces
 [source,bash]

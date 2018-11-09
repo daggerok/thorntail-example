@@ -31,12 +31,10 @@ public class CarExposer {
   @Qualifier
   @Documented
   @Retention(RUNTIME)
-  @Target({ METHOD, PARAMETER, FIELD })
   public @interface RedCar { }
 
   @Qualifier
   @Documented
   @Retention(RUNTIME)
-  @Target({ METHOD, PARAMETER, FIELD })
   public @interface WhiteCar { }
 }
