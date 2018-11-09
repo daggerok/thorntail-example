@@ -12,6 +12,7 @@
     <module>micro-service</module>
     <module>8/stateless-ejb</module>
     <module>8/produces</module>
+    <module>8/scopes</module>
   </modules>
 
   <properties>

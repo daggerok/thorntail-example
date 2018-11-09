@@ -2,8 +2,7 @@ package com.github.daggerok.resources;
 
 import com.github.daggerok.car.domain.Car;
 import com.github.daggerok.car.domain.Color;
-import com.github.daggerok.car.produces.CarExposer.RedCar;
-import com.github.daggerok.car.produces.CarExposer.WhiteCar;
+import com.github.daggerok.car.produces.CarExposer.*;
 import org.slf4j.Logger;
 
 import javax.ejb.Stateless;

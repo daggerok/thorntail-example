@@ -7,11 +7,9 @@ import javax.enterprise.inject.Produces;
 import javax.inject.Qualifier;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
 
 import static com.github.daggerok.car.domain.Color.*;
 import static com.github.daggerok.car.domain.EngineType.fuel;
-import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @ApplicationScoped
