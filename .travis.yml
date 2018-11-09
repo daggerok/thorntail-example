@@ -33,6 +33,21 @@ before_install:
 script:
 - ./mvnw >/dev/null
 #
+- ./mvnw -pl :cdi-events clean package
+- bash ./8/cdi-events/target/*-thorntail.jar &
+- wait_for 8080
+- sleep 15
+- http post :8080 color=white
+- http post :8080 ololo=trololo
+- stop_any 8080
+#
+- ./mvnw -pl :scopes clean package
+- bash ./8/scopes/target/*-thorntail.jar &
+- wait_for 8080
+- sleep 15
+- http :8080
+- stop_any 8080
+#
 - ./mvnw -pl :produces clean package
 - bash ./8/produces/target/*-thorntail.jar &
 - wait_for 8080
