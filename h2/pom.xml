@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>thorntail-example</artifactId>
+    <groupId>com.github.daggerok</groupId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>h2</artifactId>
+  <packaging>pom</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+    </dependency>
+  </dependencies>
+
+  <!-- https://www.baeldung.com/executable-jar-with-maven -->
+
+  <profiles>
+    <profile>
+      <id>help</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <configuration>
+              <arguments>
+                <argument>-jar</argument>
+                <argument>${project.build.directory}/${project.artifactId}/WEB-INF/lib/h2-${h2.version}.jar</argument>
+                <!--<argument>-browser</argument>-->
+                <argument>-help</argument>
+              </arguments>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+  <build>
+    <defaultGoal>clean package exec:exec</defaultGoal>
+
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <configuration>
+          <arguments><!-- http://www.h2database.com/javadoc/org/h2/tools/Server.html -->
+            <argument>-jar</argument>
+            <argument>${project.build.directory}/libs/h2-${h2.version}.jar</argument>
+            <argument>-tcp</argument>
+            <argument>-tcpAllowOthers</argument>
+            <argument>-web</argument>
+            <argument>-webDaemon</argument>
+            <argument>-webAllowOthers</argument>
+            <!--<argument>-browser</argument>-->
+            <argument>-pg</argument>
+            <argument>-pgDaemon</argument>
+            <argument>-pgAllowOthers</argument>
+            <!--<argument>-pgPort</argument>
+            <argument>3456</argument>-->
+            <!--<argument>-trace</argument>-->
+            <!--<argument>-help</argument>-->
+          </arguments>
+        </configuration>
+      </plugin>
+
+      <!-- copy h2.jar into ./target/libs folder -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+      </plugin>
+    </plugins>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>1.6.0</version>
+          <configuration>
+            <executable>java</executable>
+            <async>false</async>
+            <keepAlive>true</keepAlive>
+          </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>exec</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+</project>

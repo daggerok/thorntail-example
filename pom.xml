@@ -9,17 +9,20 @@
   <packaging>pom</packaging>
 
   <modules>
+    <module>h2</module>
     <module>micro-service</module>
     <module>8/stateless-ejb</module>
     <module>8/produces</module>
     <module>8/scopes</module>
     <module>8/cdi-events</module>
+    <module>8/jpa</module>
   </modules>
 
   <properties>
     <thorntail.version>2.2.1.Final</thorntail.version>
+    <h2.version>1.4.196</h2.version>
     <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
     <failOnMissingWebXml>false</failOnMissingWebXml>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -36,9 +39,28 @@
       </dependency>
 
       <dependency>
+        <groupId>io.thorntail</groupId>
+        <artifactId>bom</artifactId>
+        <version>${thorntail.version}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+
+      <dependency>
         <groupId>com.h2database</groupId>
         <artifactId>h2</artifactId>
-        <version>1.4.196</version>
+        <version>${h2.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.hibernate.javax.persistence</groupId>
+        <artifactId>hibernate-jpa-2.1-api</artifactId>
+        <version>1.0.0.Final</version>
+      </dependency>
+      <dependency>
+        <groupId>org.hibernate.common</groupId>
+        <artifactId>hibernate-commons-annotations</artifactId>
+        <version>5.0.1.Final</version>
       </dependency>
 
       <dependency>
@@ -91,6 +113,8 @@
             </execution>
           </executions>
           <configuration>
+            <hollow>false</hollow>
+            <useUberJar>true</useUberJar>
             <debugPort>5005</debugPort>
             <fractionDetectMode>force</fractionDetectMode>
             <executable>true</executable>
@@ -99,6 +123,25 @@
               <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
             </properties>
           </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>3.1.1</version>
+          <executions>
+            <execution>
+              <id>copy-dependencies</id>
+              <phase>prepare-package</phase>
+              <goals>
+                <goal>copy-dependencies</goal>
+              </goals>
+              <configuration>
+                <skip>true</skip>
+                <outputDirectory>${project.build.directory}/libs</outputDirectory>
+              </configuration>
+            </execution>
+          </executions>
         </plugin>
       </plugins>
     </pluginManagement>

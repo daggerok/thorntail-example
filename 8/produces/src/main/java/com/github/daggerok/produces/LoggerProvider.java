@@ -1,4 +1,4 @@
-package com.github.daggerok.logs;
+package com.github.daggerok.produces;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

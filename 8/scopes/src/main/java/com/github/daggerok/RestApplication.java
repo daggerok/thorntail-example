@@ -1,7 +1,7 @@
 package com.github.daggerok;
 
 import com.github.daggerok.beans.*;
-import com.github.daggerok.logs.LoggerProvider;
+import com.github.daggerok.produces.LoggerProvider;
 import com.github.daggerok.providers.ExceptionMapperProvider;
 import com.github.daggerok.providers.JacksonProvider;
 import com.github.daggerok.resources.MyResource;
