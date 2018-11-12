@@ -33,6 +33,16 @@ before_install:
 script:
 #- ./mvnw >/dev/null
 #
+- ./mvnw -pl :config
+- bash ./8/config/target/*-thorntail.jar &
+- wait_for 8080
+- sleep 15
+- http :8080 post=json
+- http get :8080 get=json
+- http :8080
+- http post :8080
+- stop_any 8080
+#
 - ./mvnw -pl :starter
 - bash ./8/starter/target/*-thorntail.jar &
 - wait_for 8080
@@ -42,7 +52,7 @@ script:
 - http :8080
 - http post :8080
 - stop_any 8080
-##
+#
 - ./mvnw -pl :binding-interceptors
 - bash ./8/binding-interceptors/target/*-thorntail.jar &
 - wait_for 8080

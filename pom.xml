@@ -19,6 +19,7 @@
     <module>8/jpa</module>
     <module>8/interceptors</module>
     <module>8/binding-interceptors</module>
+    <module>8/config</module>
   </modules>
 
   <properties>
