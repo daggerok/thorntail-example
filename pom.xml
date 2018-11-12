@@ -11,6 +11,7 @@
   <modules>
     <module>h2</module>
     <module>micro-service</module>
+    <module>8/starter</module>
     <module>8/stateless-ejb</module>
     <module>8/produces</module>
     <module>8/scopes</module>
