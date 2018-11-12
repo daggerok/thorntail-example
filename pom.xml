@@ -16,6 +16,7 @@
     <module>8/scopes</module>
     <module>8/cdi-events</module>
     <module>8/jpa</module>
+    <module>8/interceptors</module>
   </modules>
 
   <properties>
@@ -152,6 +153,7 @@
       <id>start</id>
       <build>
         <defaultGoal>clean package thorntail:start</defaultGoal>
+        <!--<defaultGoal>package thorntail:start</defaultGoal>-->
         <plugins>
           <plugin>
             <groupId>io.thorntail</groupId>
@@ -163,6 +165,9 @@
                 </goals>
               </execution>
             </executions>
+            <configuration>
+              <useUberJar>false</useUberJar>
+            </configuration>
           </plugin>
         </plugins>
       </build>

@@ -33,6 +33,15 @@ before_install:
 script:
 #- ./mvnw >/dev/null
 #
+- ./mvnw -pl :interceptors
+- bash ./8/interceptors/target/*-thorntail.jar &
+- wait_for 8080
+- sleep 15
+- http :8080 who=cares
+- http :8080 name:='["Maksimko"]'
+- http :8080 name=Maksimko
+- stop_any 8080
+#
 - ./mvnw -pl :jpa clean package
 - bash ./8/jpa/target/*-thorntail.jar &
 - wait_for 8080

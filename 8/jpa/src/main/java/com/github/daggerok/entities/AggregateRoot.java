@@ -10,6 +10,7 @@ import java.util.List;
 
 import static com.github.daggerok.entities.AggregateRoot.*;
 import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
 import static lombok.AccessLevel.PROTECTED;
 
 @Data
@@ -31,7 +32,11 @@ public class AggregateRoot extends BaseEntity {
 
   @NonNull String data;
 
-  @OneToMany(cascade = ALL)
-  //@OneToMany(fetch = EAGER, cascade = ALL)
+  //@OneToMany(cascade = ALL)
+  ////fetch = EAGER is required for collections, otherwise will caused problem:
+  ////Caused by: org.hibernate.LazyInitializationException:
+  ////failed to lazily initialize a collection of role: com.github.daggerok.entities.AggregateRoot.car,
+  ////could not initialize proxy - no Session
+  @OneToMany(fetch = EAGER, cascade = ALL)
   List<Car> car = new ArrayList<>();
 }
