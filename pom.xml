@@ -97,7 +97,7 @@
 
   <build>
     <defaultGoal>clean package</defaultGoal>
-    <finalName>${project.artifactId}</finalName>
+    <!--<finalName>${project.artifactId}</finalName>-->
 
     <pluginManagement>
       <plugins>
@@ -115,7 +115,7 @@
           <configuration>
             <hollow>false</hollow>
             <useUberJar>true</useUberJar>
-            <debugPort>5005</debugPort>
+            <!--<debugPort>5005</debugPort>-->
             <fractionDetectMode>force</fractionDetectMode>
             <executable>true</executable>
             <properties>
@@ -146,4 +146,42 @@
       </plugins>
     </pluginManagement>
   </build>
+
+  <profiles>
+    <profile>
+      <id>start</id>
+      <build>
+        <defaultGoal>clean package thorntail:start</defaultGoal>
+        <plugins>
+          <plugin>
+            <groupId>io.thorntail</groupId>
+            <artifactId>thorntail-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>start</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>debug</id>
+      <build>
+        <defaultGoal>clean package thorntail:start</defaultGoal>
+        <plugins>
+          <plugin>
+            <groupId>io.thorntail</groupId>
+            <artifactId>thorntail-maven-plugin</artifactId>
+            <configuration>
+              <debugPort>5005</debugPort>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>

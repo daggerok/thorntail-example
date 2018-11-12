@@ -1,4 +1,4 @@
-package com.github.daggerok.entities;
+package com.github.daggerok.entities.root.car;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

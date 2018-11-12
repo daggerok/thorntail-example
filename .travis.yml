@@ -37,9 +37,11 @@ script:
 - bash ./8/jpa/target/*-thorntail.jar &
 - wait_for 8080
 - sleep 15
+- http :8080 hello=world
 - http :8080 ololo=trololo
-- http :8080 trololo=ololo
-- http :8080
+- http :8080 car:='{"color":"RED"}'
+- http :8080 no='nope, really..' car:='{"color":null}'
+- http :8080 array:='["hello","world"]' car:='{"color":"Oops, I did it again..."}'
 - stop_any 8080
 #
 - ./mvnw -pl :cdi-events clean package
