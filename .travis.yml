@@ -33,6 +33,16 @@ before_install:
 script:
 #- ./mvnw >/dev/null
 #
+- ./mvnw -pl :binding-interceptors
+- bash ./8/binding-interceptors/target/*-thorntail.jar &
+- wait_for 8080
+- sleep 15
+- http :8080/active who=cares
+- http :8080/inactive name=Fucking-Hitler
+- http :8080/active name:='["Maksimko"]'
+- http :8080/active name=Maksimko
+- stop_any 8080
+#
 - ./mvnw -pl :interceptors
 - bash ./8/interceptors/target/*-thorntail.jar &
 - wait_for 8080
